@@ -1,0 +1,28 @@
+export const jinomLocators = {
+  loginPage: '//a[@href="/login"]',
+  email: '//input[@type="email"]',
+  password: '//input[@type="password"]',
+  buttonLogin: '//button[@type="submit"]',
+  successLogin: '//h2[text()="Login Berhasil"]',
+  buttonBeranda: '//button[contains(., "Ke Beranda")]',
+  register: {
+    registrasiPage: '//a[@href="/registrasi"]',
+    name: '//input[@type="text"]',
+    email: '//input[@type="email"]',
+    phoneNumber: '//input[@type="tel"]',
+    password: '//input[@type="password"]',
+    buttonRegistrasi: '//button[@type="submit"]',
+    buttonVerifikasi: '//button[contains(., " Lanjut Verifikasi ")]',
+    successRegister: '//h2[text()="Registrasi Berhasil!"]',
+  },
+  buttonCekLokasi: '//button[contains(., "Lokasi")]',
+  searchLocation: '//input[@type="text"]',
+  location: '//span[@class="font-semibold"]',
+  buttonSelanjutnya: '//button[text()=" Selanjutnya "]',
+  pilihKapasitas: '//h2[text()="Kebutuhan Kapasitas"]',
+  inputKapasitas: '//input[@placeholder="Masukkan kebutuhan kapasitas"]',
+  buttonPilihLayanan: '//button[text()="Pilih Layanan"]',
+  layanan: '//div[@class="flex gap-3 pb-3"]/div',
+  buttonProsesPembayaran: '//button[text()=" Proses Pembayaran "]',
+  
+};

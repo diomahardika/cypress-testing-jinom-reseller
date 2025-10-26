@@ -1,0 +1,22 @@
+{
+  "registrasi": {
+    "fullName": "John Doe",
+    "email": "john.doe@test.com",
+    "phoneNumber": "873456789123",
+    "password": "johnPass2025",
+    "invalidEmail": "john.doe@test"
+  },
+  "location": [
+    "Tabanan, Bali",
+    "Denpasar, Bali",
+    "Sanur, Bali"
+  ],
+  "isStatus": {
+    "reachable": "Lokasi Terjangkau",
+    "unReachable": "Lokasi Tidak Terjangkau"
+  },
+  "choiceBy": {
+    "capacity": 100,
+    "customer": 200
+  }
+}
