@@ -12,8 +12,6 @@ module.exports = defineConfig({
     },
     env: {
       baseUrl: process.env.CYPRESS_BASE_URL,
-      email: process.env.ENV_LOGIN_EMAIL,
-      password: process.env.ENV_LOGIN_PASSWORD
     },
     pageLoadTimeout: 30000,
     defaultCommandTimeout: 30000,
