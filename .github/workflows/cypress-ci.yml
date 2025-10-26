@@ -1,0 +1,59 @@
+name: Cypress UI Tests
+
+# Pemicu workflow: dijalankan saat ada push atau pull request ke branch 'main'
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    # Menggunakan OS Ubuntu versi terbaru
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout kode dari repositori
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Anda bisa sesuaikan dengan versi Node.js Anda
+          cache: 'npm'
+
+      # 3. Install dependensi (menggunakan 'npm ci' lebih cepat dan direkomendasikan untuk CI)
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Jalankan pengujian Cypress secara headless
+      - name: Run Cypress tests
+        run: npm run html-report
+        env:
+          # Set environment variable yang dibutuhkan oleh Cypress
+          CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL || 'https://devresellers.jinom.ai/' }}
+
+      # 5. Upload artefak (laporan, video, screenshot) jika pengujian gagal
+      # 'if: failure()' berarti langkah ini hanya berjalan jika langkah sebelumnya gagal
+      - name: Upload Test Report on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/reports/html
+
+      - name: Upload Videos on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Upload Screenshots on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: images/
