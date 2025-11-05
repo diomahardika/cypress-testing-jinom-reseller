@@ -28,7 +28,7 @@ const registrasiPage = {
     const randomId = Date.now();
     // 2. Buat email dan no unik
     const uniqueEmail = `dio_tester_${randomId}@example.com`;
-    const uniquePhone = `8${randomId.slice(-9)}`;
+    const uniquePhone = `8${String(randomId).slice(-9)}`;
     cy.xpath(jinomLocators.register.registrasiPage)
       .first()
       .should("be.visible")
