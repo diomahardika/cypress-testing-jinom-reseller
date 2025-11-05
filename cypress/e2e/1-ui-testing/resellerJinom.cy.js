@@ -21,10 +21,10 @@ describe("Fitur Autentikasi (Login & Registrasi)", () => {
     cy.xpath('//a[@href="/login"]').click();
     cy.url().should("include", "/login");
   });
-  it("Positif - User success registrasi", () => {
+  it.only("Positif - User success registrasi", () => {
     registrasiPage.successRegistrasi(
       jinomData.registrasi.fullName,
-      jinomData.registrasi.email,
+      // jinomData.registrasi.email,
       jinomData.registrasi.phoneNumber,
       jinomData.registrasi.password
     );

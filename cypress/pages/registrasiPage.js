@@ -23,16 +23,23 @@ const registrasiPage = {
     cy.xpath(jinomLocators.register.buttonRegistrasi).click();
     cy.contains("The email has already been taken.").should("be.visible");
   },
-  successRegistrasi(fullName, email, phoneNumber, password) {
+  successRegistrasi(fullName, password) {
+    // 1. Buat ID unik dari timestamp
+    const randomId = Date.now();
+    // 2. Buat email dan no unik
+    const uniqueEmail = `dio_tester_${randomId}@example.com`;
+    const uniquePhone = `8${randomId.slice(-9)}`;
     cy.xpath(jinomLocators.register.registrasiPage)
       .first()
       .should("be.visible")
       .click();
     cy.xpath(jinomLocators.register.name).should("be.visible").type(fullName);
-    cy.xpath(jinomLocators.register.email).should("be.visible").type(email);
+    cy.xpath(jinomLocators.register.email)
+      .should("be.visible")
+      .type(uniqueEmail);
     cy.xpath(jinomLocators.register.phoneNumber)
       .should("be.visible")
-      .type(phoneNumber);
+      .type(uniquePhone);
     cy.xpath(jinomLocators.register.password)
       .first()
       .should("be.visible")
